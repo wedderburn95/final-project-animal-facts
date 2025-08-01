@@ -3,8 +3,8 @@ import "./Main.css";
 function Main() {
   return (
     <div className="container">
-      <p>This is a React project bootstrapped with Vite.</p>
-      <p>"Vite" means "quick" in French</p>
+      <h2>This is my final project main file</h2>
+      <p>Final project description will go here.</p>
     </div>
   );
 }

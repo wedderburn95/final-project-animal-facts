@@ -3,8 +3,8 @@ import headerLogo from "../assets/logo.png";
 function Header() {
   return (
     <div>
-      <img src="{headerLogo}" alt="Hello Vite Logo" />
-      <h1>Hello Vite!</h1>
+      <img className="header__logo" src={headerLogo} alt="Hello Vite Logo" />
+      <h1>Fun Animal Facts!</h1>
     </div>
   );
 }

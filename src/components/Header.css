@@ -18,3 +18,14 @@
   font-size: 40px;
   margin-left: 12px;
 }
+
+.header__logo {
+  width: 100px;
+  height: auto;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.header__logo:hover {
+  animation: logo-spin infinite 20s linear;
+}
