@@ -1,9 +1,9 @@
 import { useState } from "react";
-import Animal from "../../src/components/Animal/Animal.jsx";
-import Header from "../../src/components/Header/Header.jsx";
-import Main from "../../src/components/Main/Main.jsx";
-import Footer from "../../src/components/Footer/Footer.jsx";
-import "../../src/components/App/App.css";
+import Animal from "../components/Animal/Animal.js";
+import Header from "../components/Header/Header.js";
+import Main from "../components/Main/Main.js";
+import Footer from "../components/Footer/Footer.js";
+import "../components/App/App.css";
 import "./Home.css"; // Assuming you have some styles for Home
 
 function Home() {

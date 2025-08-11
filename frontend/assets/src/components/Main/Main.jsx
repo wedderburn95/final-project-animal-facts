@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import App from "../../components/App/App.jsx"; // ✅ fixed path
+import App from "../App/App.js"; // ✅ fixed path
 
 import "./Main.css";
 

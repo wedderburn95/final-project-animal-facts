@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { AuthContext } from "../../context/AuthContext/AuthContext.jsx";
+import { AuthContext } from "../AuthContext/AuthContext.js";
 
 export default function Register() {
   const [email, setEmail] = useState("");
