@@ -1,0 +1,6 @@
+.Animal__image {
+  width: 300px;
+  height: auto;
+  display: block;
+  border: 2px solid red; /* temporary to see where it is */
+}
