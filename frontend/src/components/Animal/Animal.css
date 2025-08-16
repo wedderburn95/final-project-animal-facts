@@ -1,0 +1,94 @@
+.Animal__image {
+  display: block;
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 24px;
+  margin: 1rem auto;
+  border: 2px solid red; /* Debug border so you can see if it’s there */
+}
+
+.Animal__gif {
+  display: block;
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 24px;
+  margin: 1rem auto;
+  border: 2px solid blue; /* Debug border */
+}
+
+.Animal__type {
+  font-size: 2rem;
+  margin: 1rem 0;
+  color: gray;
+}
+
+.Animal {
+  text-align: center;
+  padding: 1rem;
+  background-color: rgb(91, 233, 91);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px purple;
+}
+
+.loading {
+  font-size: 1.2rem;
+  color: #333;
+  animation: pulse 1.5s infinite;
+}
+
+.error {
+  color: crimson;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.Animal__retry {
+  color: crimson;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 14px;
+  background-color: whitesmoke;
+}
+
+.Animal__spinner {
+  border: 5px solid #f3f3f3;
+  border-top: 6px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin: 2rem auto;
+}
+
+.Animal__error {
+  color: crimson;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
