@@ -1,14 +1,36 @@
-const BASE_URL = "https://some-random-api.ml/animal";
+const BASE_URL =
+  process.env.NODE_ENV === "production"
+    ? process.env.REACT_APP_API_URL // deployed backend
+    : "http://localhost:3001"; // local backend
+
+// helper to handle errors consistently
+async function checkResponse(response) {
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => ({}));
+    throw new Error(errorData.message || `Error: ${response.status}`);
+  }
+  return response.json();
+}
 
 export async function getAnimalData(animal) {
-  try {
-    const response = await fetch(`${BASE_URL}/${animal}`);
-    if (!response.ok) {
-      throw new Error("Failed to fetch animal data");
-    }
-    return await response.json(); // { fact: "...", image: "..." }
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
+  const response = await fetch(`${BASE_URL}/api/animals/${animal}`);
+  return checkResponse(response);
+}
+
+export async function registerUser(name, email, password) {
+  const response = await fetch(`${BASE_URL}/signup`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, email, password }),
+  });
+  return checkResponse(response);
+}
+
+export async function loginUser(email, password) {
+  const response = await fetch(`${BASE_URL}/signin`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password }),
+  });
+  return checkResponse(response);
 }

@@ -2,8 +2,8 @@ import "./About.css";
 
 function About() {
   return (
-    <div className="about">
-      <h2>About Animal Facts & Fun 🐾</h2>
+    <section className="about">
+      <h2 className="about__api-title">About Animal Facts & Fun 🐾</h2>
 
       <p>
         Welcome to <strong>Animal Facts & Fun</strong>! This web app delivers
@@ -11,8 +11,8 @@ function About() {
         entertaining GIFs to brighten your day.
       </p>
 
-      <h3>🌐 APIs Used</h3>
-      <ul>
+      <h3 className="about__api-used">🌐 APIs Used</h3>
+      <ul className="about__api-list">
         <li>
           <a href="https://catfact.ninja/" target="_blank" rel="noreferrer">
             Catfact.ninja
@@ -38,7 +38,7 @@ function About() {
         <em> TripleTen Software Engineering Program</em>. My goal was to build a
         fun, interactive React app that uses real-world APIs and modern routing.
       </p>
-    </div>
+    </section>
   );
 }
 

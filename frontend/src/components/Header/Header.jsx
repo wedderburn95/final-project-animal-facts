@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import headerLogo from "../../../assets/logo.png";
 import "./Header.css";
 
-function Header() {
+function Header({ onLoginClick, onSignupClick }) {
   return (
     <header className="header">
       <div className="header__logo-container">
@@ -24,6 +24,12 @@ function Header() {
         <Link to="/about" className="header__link">
           About
         </Link>
+        <button className="header__btn" onClick={onLoginClick}>
+          Log In
+        </button>
+        <button className="header__btn" onClick={onSignupClick}>
+          Sign Up
+        </button>
       </nav>
     </header>
   );

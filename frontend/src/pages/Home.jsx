@@ -19,7 +19,7 @@ function Home() {
         Choose an animal:
       </label>
       <select
-        className="Select__dropdown"
+        className="select__dropdown"
         id="animal-select"
         value={selectedAnimal}
         onChange={(e) => setSelectedAnimal(e.target.value)}

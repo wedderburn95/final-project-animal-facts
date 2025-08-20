@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { loginUser } from "../../utils/api";
-import { useAuth } from "../../contexts/AuthContext";
+import { registerUser } from "../../utils/api";
 
-function LoginModal({ isOpen, onClose }) {
-  const { login } = useAuth();
+function SignupModal({ isOpen, onClose }) {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -15,19 +14,29 @@ function LoginModal({ isOpen, onClose }) {
     setError("");
 
     try {
-      const data = await loginUser(email, password);
-      login(data.token); // save token in context/localStorage
+      await registerUser(name, email, password);
+      alert("Registration successful! You can now log in.");
       onClose();
     } catch (err) {
-      setError(err.message || "Login failed. Please try again.");
+      setError(err.message || "Signup failed. Please try again.");
     }
   };
 
   return (
     <div className="modal">
       <div className="modal__content">
-        <h2>Login</h2>
+        <h2>Sign Up</h2>
         <form onSubmit={handleSubmit}>
+          <label>
+            Name:
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+          </label>
+
           <label>
             Email:
             <input
@@ -50,7 +59,7 @@ function LoginModal({ isOpen, onClose }) {
 
           {error && <p className="modal__error">{error}</p>}
 
-          <button type="submit">Login</button>
+          <button type="submit">Sign Up</button>
         </form>
         <button onClick={onClose} className="modal__close">
           Close
@@ -60,4 +69,4 @@ function LoginModal({ isOpen, onClose }) {
   );
 }
 
-export default LoginModal;
+export default SignupModal;
