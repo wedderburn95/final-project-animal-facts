@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { loginUser } from "../../utils/api";
-import { useAuth } from "../../contexts/AuthContext";
+import { useAuth } from "../../context/AuthContext/AuthContext.jsx";
 
 function LoginModal({ isOpen, onClose }) {
   const { login } = useAuth();
