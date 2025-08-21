@@ -1,4 +1,4 @@
-import { creatContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, useContext } from "react";
 
 export const AuthContext = createContext();
 
@@ -18,7 +18,7 @@ export function AuthProvider({ children }) {
     setToken(token);
   };
 
-  const logout = (token) => {
+  const logout = () => {
     setToken(null);
     setUser(null);
   };

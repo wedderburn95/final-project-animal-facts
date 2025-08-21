@@ -1,5 +1,5 @@
 import { useEffect, useContext, useState } from "react";
-import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../context/AuthContext/AuthContext.jsx";
 import { useNavigate } from "react-router-dom";
 
 export default function Profile() {

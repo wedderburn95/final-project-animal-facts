@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import { AuthProvider } from "../../context/AuthContext/AuthContext.jsx";
 
 import Header from "../Header/Header.jsx";
 import About from "../../pages/About.jsx";
@@ -15,23 +16,31 @@ function App() {
   const [isSignupOpen, setIsSignupOpen] = useState(false);
 
   return (
-    <>
-      <Header
-        onLoginClick={() => setIsLoginOpen(true)}
-        onSignupClick={() => setIsSignupOpen(true)}
-      />
+    <AuthProvider>
+      <>
+        <Header
+          onLoginClick={() => setIsLoginOpen(true)}
+          onSignupClick={() => setIsSignupOpen(true)}
+        />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-      </Routes>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
 
-      <Footer />
+        <Footer />
 
-      {/* Modals */}
-      <LoginModal isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
-      <SignupModal isOpen={isSignupOpen} onClose={() => setIsSignupOpen(false)} />
-    </>
+        {/* Modals */}
+        <LoginModal
+          isOpen={isLoginOpen}
+          onClose={() => setIsLoginOpen(false)}
+        />
+        <SignupModal
+          isOpen={isSignupOpen}
+          onClose={() => setIsSignupOpen(false)}
+        />
+      </>
+    </AuthProvider>
   );
 }
 
