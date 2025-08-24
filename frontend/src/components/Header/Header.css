@@ -1,0 +1,58 @@
+@font-face {
+  src: url("../assets/yellowtail-regular.woff") format("woff");
+  font-family: "Yellowtail";
+}
+
+.header {
+  position: relative;
+  display: flex;
+  height: 80px;
+  align-items: center;
+  padding: 0 25px;
+}
+
+.header__logo-container {
+  position: absolute;
+  left: 25px;
+}
+.header__logo {
+  width: 64px;
+  height: 42px;
+}
+.header__title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Yellowtail", cursive;
+  font-size: 40px;
+  margin: 0;
+}
+
+.header__logo {
+  width: 100px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.header__logo:hover {
+  animation: logo-spin infinite 20s linear;
+}
+
+.header__nav {
+  position: absolute;
+  display: flex;
+  gap: 1rem;
+  margin-left: auto;
+  right: 25px;
+}
+
+.header__link {
+  text-decoration: none;
+  color: #0077cc;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+}
+
+.header__link:hover {
+  text-decoration: underline;
+}
