@@ -20,7 +20,7 @@ function About() {
           – for fun animal facts
         </li>
         <li>
-          <a
+          <a className="about__api-link"
             href="https://developers.giphy.com/"
             target="_blank"
             rel="noreferrer"

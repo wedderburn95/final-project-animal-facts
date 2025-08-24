@@ -1,6 +1,7 @@
 import { useEffect, useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext/AuthContext.jsx";
 import { useNavigate } from "react-router-dom";
+import { getProfile } from "../../utils/api.js";
 
 export default function Profile() {
   const { token, logout } = useContext(AuthContext);
@@ -13,13 +14,14 @@ export default function Profile() {
       navigate("/login");
       return;
     }
-    fetch("http://localhost:5000/profile", {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-      .then((res) => res.json())
+
+    getProfile(token)
       .then((data) => {
         setEmail(data.email);
-        setLikedAnimals(data.likedAnimals);
+        setLikedAnimals(data.likedAnimals || []);
+      })
+      .catch((err) => {
+        console.error("Failed to fetch profile:", err);
       });
   }, [token, navigate]);
 

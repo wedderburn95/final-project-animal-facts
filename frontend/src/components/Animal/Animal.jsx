@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-// import AnimalImage from "./AnimalImage";
-// import AnimalFact from "./AnimalFact";
-// import AnimalGif from "./AnimalGif";
+import { checkResponse } from "../../utils/api"; // ✅ import helper
 import "./Animal.css";
 
 const GIPHY_API_KEY = "7yD8XoicQkrVDqQBN9lUiNUlWZuyXM81";
@@ -22,20 +20,17 @@ function Animal({ selectedAnimal }) {
 
       if (selectedAnimal === "cat") {
         const res = await fetch("https://catfact.ninja/fact");
-        if (!res.ok) throw new Error("Failed to fetch cat fact");
-        const data = await res.json();
+        const data = await checkResponse(res); // ✅ cleaner
         fact = data.fact;
         image = "https://cataas.com/cat?width=300";
       } else if (selectedAnimal === "dog") {
         const res = await fetch("https://dog.ceo/api/breeds/image/random");
-        if (!res.ok) throw new Error("Failed to fetch dog image");
-        const data = await res.json();
+        const data = await checkResponse(res);
         fact = "Dogs are loyal and great companions.";
         image = data.message;
       } else if (selectedAnimal === "fox") {
         const res = await fetch("https://randomfox.ca/floof/");
-        if (!res.ok) throw new Error("Failed to fetch fox image");
-        const data = await res.json();
+        const data = await checkResponse(res);
         fact = "Foxes are known for their cunning nature.";
         image = data.image;
       } else if (selectedAnimal === "duck") {
@@ -60,9 +55,7 @@ function Animal({ selectedAnimal }) {
       const gifRes = await fetch(
         `https://api.giphy.com/v1/gifs/search?api_key=${GIPHY_API_KEY}&q=${selectedAnimal}&limit=1`
       );
-
-      if (!gifRes.ok) throw new Error("Failed to fetch GIF");
-      const gifData = await gifRes.json();
+      const gifData = await checkResponse(gifRes); // ✅ cleaner
       const gif =
         gifData.data.length > 0 ? gifData.data[0].images.downsized.url : null;
       setGifUrl(gif);
@@ -75,6 +68,7 @@ function Animal({ selectedAnimal }) {
       setLoading(false);
     }
   };
+
   useEffect(() => {
     fetchAnimalAndGif();
   }, [selectedAnimal]);
@@ -112,7 +106,7 @@ function Animal({ selectedAnimal }) {
           src={animalData.image}
           alt={selectedAnimal}
           onError={(e) => {
-            e.target.onerror = null; // Prevent infinite loop
+            e.target.onerror = null;
             e.target.src = "https://via.placeholder.com/300?text=No+Image";
           }}
         />

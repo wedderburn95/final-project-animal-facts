@@ -4,7 +4,7 @@ const BASE_URL =
     : "http://localhost:3001"; // local backend
 
 // helper to handle errors consistently
-async function checkResponse(response) {
+export async function checkResponse(response) {
   if (!response.ok) {
     const errorData = await response.json().catch(() => ({}));
     throw new Error(errorData.message || `Error: ${response.status}`);
@@ -31,6 +31,13 @@ export async function loginUser(email, password) {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
+  });
+  return checkResponse(response);
+}
+
+export async function getProfile(token) {
+  const response = await fetch(`${BASE_URL}/users/me`, {
+    headers: { Authorization: `Bearer ${token}` },
   });
   return checkResponse(response);
 }
